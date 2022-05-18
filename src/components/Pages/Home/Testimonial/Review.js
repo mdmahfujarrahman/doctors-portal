@@ -6,9 +6,9 @@ const Review = ({review}) => {
         <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
                 <p>{reviews}</p>
-                <div class="flex items-center mt-2">
-                    <div class="avatar">
-                        <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 mr-5">
+                <div className="flex items-center mt-2">
+                    <div className="avatar">
+                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 mr-5">
                             <img  src={img} alt="" />
                         </div>
                     </div>
