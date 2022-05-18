@@ -2,7 +2,7 @@ import React from 'react';
 import clock from '../../../../img/icons/clock.svg';
 import marker from '../../../../img/icons/marker.svg';
 import phone from '../../../../img/icons/phone.svg';
-import InfoCard from '../../InfoCard/InfoCard';
+import InfoCard from '../InfoCard/InfoCard';
 
 const Info = () => {
 
