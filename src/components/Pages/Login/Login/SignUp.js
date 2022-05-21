@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     useCreateUserWithEmailAndPassword,
-    useSignInWithGoogle, useUpdateProfile
+    useSignInWithGoogle
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,9 +19,10 @@ const SignUp = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [updateProfile, updating, uError] = useUpdateProfile(auth, {
-        sendEmailVerification: true,
-    });
+    const [updateProfile, updating, uError] = useCreateUserWithEmailAndPassword(
+        auth,
+        { sendEmailVerification: true }
+    );
     const navigate = useNavigate()
 
     let signInError;
@@ -39,7 +40,7 @@ const SignUp = () => {
     }
 
     if (user || gUser) {
-        
+        console.log(user);
     }
 
     const onSubmit = async data => {
