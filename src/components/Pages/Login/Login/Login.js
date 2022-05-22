@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase/firebase.init";
+import useToken from "../../../../hooks/useToken";
 import Loading from "../../Shared/Loading";
 
 
@@ -20,16 +21,19 @@ const Login = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-    
+    const [token] = useToken(user || gUser);
     const from = location.state?.from?.pathname || "/";
+    let signInError;
+
+
+
 
     useEffect(() => {
-        if (user || gUser) {
-            console.log(user);
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate]);
-    let signInError;
+    }, [token, from, navigate]);
+    
 
     if (error || gError) {
         signInError = (
@@ -49,6 +53,8 @@ const Login = () => {
     const onSubmit = (data) => {
         signInWithEmailAndPassword(data.email, data.password);
     };
+
+    
     return (
         <section className="flex justify-center items-center h-screen">
             <div className="card w-96 bg-base-100 shadow-xl">

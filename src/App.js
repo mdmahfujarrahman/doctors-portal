@@ -4,12 +4,14 @@ import "react-toastify/dist/ReactToastify.css";
 import About from "./components/Pages/About/About";
 import Appointment from "./components/Pages/Appointment/Appointment";
 import Contact from "./components/Pages/Contact/Contact";
+import AllUsers from "./components/Pages/Dashboard/AllUsers";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
 import MyAppointment from "./components/Pages/Dashboard/MyAppoinment";
 import MyHistory from "./components/Pages/Dashboard/MyHistory";
 import MyReview from "./components/Pages/Dashboard/MyReview";
 import Home from "./components/Pages/Home/Home/Home";
 import Login from "./components/Pages/Login/Login/Login";
+import RequireAdmin from "./components/Pages/Login/Login/RequireAdmin";
 import RequireAuth from "./components/Pages/Login/Login/RequireAuth";
 import SignUp from "./components/Pages/Login/Login/SignUp";
 import NotFound from "./components/Pages/NotFound/NotFound";
@@ -40,10 +42,16 @@ function App() {
                   }
               >
                   <Route index element={<MyAppointment />} />
-                  <Route path="review"
-                  element={<MyReview />} />
-                  <Route path="history"
-                  element={<MyHistory />} />
+                  <Route path="review" element={<MyReview />} />
+                  <Route path="history" element={<MyHistory />} />
+                  <Route
+                      path="users"
+                      element={
+                          <RequireAdmin>
+                              <AllUsers />
+                          </RequireAdmin>
+                      }
+                  />
               </Route>
               <Route path="/review" element={<Review />}></Route>
               <Route path="/contact" element={<Contact />}></Route>
